@@ -1,0 +1,15 @@
+.bug-form {
+
+    background-color: white;
+    position: absolute;
+    top: 130px;
+    left: 600px;
+    z-index: 1;
+    border-radius: 10px;
+    
+}
+
+.description-field {
+    width: 300px;
+    height: 200px;
+}
