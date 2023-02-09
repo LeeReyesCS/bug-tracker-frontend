@@ -75,7 +75,7 @@ export const BugForm = (props) => {
         className="submit-btn"
         defaultValue="Submit Bug"
       ></input> 
-      {/* change to button instead of input tag */}
       </form>
   )
 }
+export default BugForm;

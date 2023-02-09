@@ -49,7 +49,7 @@
   }
 
 
-  .signOut {
+  .button {
     position: relative;
     background-color: #32a860;
     border: none;
@@ -65,7 +65,7 @@
     cursor: pointer;
   }
   
-  .signOut:after {
+  .button:after {
     content: "";
     background: #f1f1f1;
     display: block;
@@ -78,11 +78,11 @@
     transition: all 0.8s
   }
   
-  .signOut:hover {
+  .button:hover {
     color: #32a860;
     background-color: white;
  }
-  .SignOut:active:after {
+  .button:active:after {
     padding: 0;
     margin: 0;
     opacity: 1;

@@ -1,56 +1,44 @@
-
-import { NavBar } from './Components/NavBar';
 import './App.css';
-import { StatusBar } from './Components/StatusBar';
-import { BugForm } from './Components/BugForm';
+import { BugForm } from './Components/bugform/BugForm';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from './api/axiosConfig';
+import Layout from './Components/Layout';
+import { Routes, Route, BrowserRouter as Router, Link } from 'react-router-dom';
+import SignIn from './Components/signin/SignIn';
+import LoggedIn from './Components/loggedin/LoggedIn';
+import UpdateBug from './Components/updatebug/UpdateBug';
+import { NavBar } from './Components/NavBar';
 
-const BACKEND_URL ="http://127.0.0.1:8080";
+
 
 function App() {
 
-  const [listofBugs, setListofBugs] = useState([]);
-  const addNewBug = (newBug) => {
-    axios
-    .post(`${BACKEND_URL}/bugs`, newBug)
-    .then((response) => {
-      getBugList();
-    })
-    .catch((error) => {
-      console.log("error", error);
-      alert("Couldn't create new bug.");
-    });
-  };
+  const [bugs, setBugs] = useState();
 
-  const getBugList = () => {
-    axios
-    .get(`${BACKEND_URL}/bugs`).then((result) => {
-      setListofBugs(result.data);
-    });
-  };
-
-  useEffect (() => getBugList,[]);
-
-  const [currentBug, setCurrentBug] = useState(null);
-  const updateCurrentBug = (id) => {
-    setCurrentBug (id ? parseInt(id):null);
-  };
-
-  const getCurrentBugName = () => {
-    if(currentBug) {
-      const current = listofBugs.find((element)=>
-      parseInt(element.id) === currentBug);
-      return current.name;
-    } else {
-      return null;
+  const getBugs = async () => {
+    try {
+      const response = await api.get("/bugs");
+      console.log(response.data);
+      setBugs(response.data);
+    } catch(error) {
+      console.log(error);
     }
+
+
   }
-  return (<>
-<NavBar/>
-<StatusBar/>
-</>
-  );
+
+  useEffect (() => {
+    getBugs();
+  },[])
+
+  return (
+    <Routes>
+      <Route path ="/" element = {<Layout/>}>
+        <Route path ="/signin" element={<SignIn/>}></Route>
+        <Route path="/" element={<LoggedIn bugs={bugs}/>}></Route>
+        <Route path ="/updatebug" element={<UpdateBug/>}></Route>
+      </Route>
+    </Routes>);
 }
 
 export default App;
