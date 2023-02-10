@@ -2,31 +2,48 @@
 
 .spacing {
     background-color: white;
-    padding-top: 75px;
-    padding-left: 200px;
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
 }
 .container {
     background-color: rgb(199, 207, 216);
     position:relative;
-    width: 600px;
-    height: 250px;
+    width: 550px;
+    height: 150px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 header {
-    background-color: #32a860;
     color: white;
     font-family: 'Montserrat', sans-serif;
     
 }
 
-ul li {
-    display:inline
+
+
+table {
+    table-layout: fixed;
+    width: 100% ;
+    border-collapse: collapse ;
+    border: 1px black solid ;
 }
 
-li {
-    padding-right: 20px;
+td {
+    width: 25%;
+
+}
+
+.status{
+    text-align:center;
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+th{
+    background-color: #32a860;
+    padding-right: 80.5px;
 }

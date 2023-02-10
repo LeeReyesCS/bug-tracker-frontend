@@ -1,74 +1,80 @@
 import './BugForm.css';
 import { useState } from 'react';
+import api from '../../api/axiosConfig';
 
-export const BugForm = (props) => {
-  const [priority, setPriority] = useState("");
-  const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
-  const [dueDate,setDueDate] = useState("");
+export const BugForm = ({toggleForm}) => {
+  const [bug, setBug] = useState ({
+    priority:"Low",
+    description:"",
+    status:"Solved",
+    dueDate:"",
+  });
 
-  const handlePriorityChange = (event) => {
-    setPriority(event.target.value);
+
+  const { priority, description, status, dueDate } = bug;
+
+  const onInputChange = (event) => {
+    setBug({ ...bug, [event.target.name]: event.target.value });
+  };
+
+  function refreshPage() {
+    window.location.reload(false);
   }
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  }
-  const handleStatusChange = (event) => {
-    setStatus(event.target.value);
-  }
-  const handleDueDateChange = (event) => {
-    setDueDate(event.target.value);
-  }
-
-  const onSubmitBug = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    props.newBug({description,status,dueDate});
-    setDescription("");
-    setStatus("");
-    setDueDate("");
-    // props.toggleForm;
+    await api.post("/bugs", bug);
+    toggleForm();
+    alert("Bug submitted!");
+    refreshPage();
   };
   return (
-    <form className="bug-form" onSubmit={onSubmitBug}>
+    <form className="bug-form" onSubmit={(event)=>onSubmit(event)}>
       <h2>Submit a new Bug</h2>
       <br></br>
       <div>
 
        <label for="priority">Priority:</label>
-    <select id="priority" name="priority"
-      defaultValue={priority}
-      onChange={handlePriorityChange}>
+    <select id="priority" name="priority" required="true"
+      value={priority}
+      onChange={(event)=>onInputChange(event)}>
     <option value="low">low</option>
     <option value="medium">medium</option>
     <option value="high">high</option>
-
+<br></br>
   </select>
         <textarea 
         placeholder='Description'
         className='description-field'
-        defaultValue={description}
-        onChange={handleDescriptionChange}></textarea>
+        name='description'
+        required='true'
+        value={description}
+        onChange={(event)=>onInputChange(event)}>
+        </textarea>
       </div>
       <div>
         <label for="status">Status:</label>
-    <select id="Status" name="Status"
-        defaultValue={status}
-        onChange={handleStatusChange}>
-      <option value="solved">Solved</option>
-      <option value="blocked">Blocked</option>
-      <option value="review">Needs Review</option>
-      <option value="unclaimed">Unclaimed</option>
-      <option value="up-next">Up Next</option>
+    <select id="status" name="status" required ="true"
+        value={status}
+        onChange={(event)=>onInputChange(event)}>
+
+      <option value="Solved">Solved</option>
+      <option value="Blocked">Blocked</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Needs Review">Needs Review</option>
+      <option value="Unclaimed">Unclaimed</option>
+      <option value="Up Next">Up Next</option>
 
     </select>
       </div>
       <div>
-        <input type="date"
+        <input type="Date"
         placeholder='Due Date'
         className='form-field'
-        defaultValue={dueDate}
-        onChange={handleDueDateChange}></input>
+        name ='dueDate'
+        required='true'
+        value={dueDate}
+        onChange={(event)=>onInputChange(event)}></input>
       </div>
       <input
         type="Submit"

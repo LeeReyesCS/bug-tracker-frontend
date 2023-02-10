@@ -1,14 +1,20 @@
 import React from 'react'
 import { NavBar } from '../NavBar';
 import StatusBar from '../statusbar/StatusBar';
-import Graph from '../Graph';
+import BarChart from '../BarChart';
+import { useState } from 'react';
+import './LoggedIn.css'
 
-const LoggedIn = ({bugs}) => {
+const LoggedIn = ({bugData}) => {
+
+
   return (
     <>
     <NavBar/>
-    <Graph bugs = {bugs}/>
-    <StatusBar bugs = {bugs}/>
+    <div className='box'>
+    <BarChart chartData = {bugData}/>
+    <StatusBar bugs = {bugData}/>
+    </div>
     </>
   )
 }

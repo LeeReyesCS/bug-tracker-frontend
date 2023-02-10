@@ -8,19 +8,20 @@ export const StatusBar = ({bugs}) => {
   return (
     <div className ='spacing'>
     <div className='container'>
+      <table>
       <header>
         <tr>
         <th>Priority</th>
           <th>Description</th>
           <th>Status</th>
-          <th>Due By</th>
-          <th>Developer(s)</th>
+          <th>Due</th>
+          {/* <th>Developer(s)</th> */}
         </tr>
       </header>
           {
             bugs?.map((bug) => {
               return(
-                <tr className='container'>
+                <tr className='row-container'>
                 <td className='priority'>{bug.priority}</td>
                 <td className='description'>{bug.description}</td>
                 <td className='status'>{bug.status}</td>
@@ -29,6 +30,7 @@ export const StatusBar = ({bugs}) => {
               )
             })
           };
+          </table>
     </div>
     </div>
   )
