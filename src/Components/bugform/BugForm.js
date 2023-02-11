@@ -38,9 +38,9 @@ export const BugForm = ({toggleForm}) => {
     <select id="priority" name="priority" required="true"
       value={priority}
       onChange={(event)=>onInputChange(event)}>
-    <option value="low">low</option>
-    <option value="medium">medium</option>
-    <option value="high">high</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
 <br></br>
   </select>
         <textarea 

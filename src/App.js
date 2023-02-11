@@ -7,6 +7,7 @@ import SignIn from './Components/signin/SignIn';
 import LoggedIn from './Components/loggedin/LoggedIn';
 import UpdateBug from './Components/updatebug/UpdateBug';
 import Register from './Components/register/Register';
+import About from './Components/about/About';
 
 
 
@@ -35,8 +36,9 @@ function App() {
       <Route path ="/" element = {<Layout/>}>
         <Route path ="/signin" element={<SignIn/>}></Route>
         <Route path ="/register" element ={<Register/>}></Route>
-        <Route path="/" element={<LoggedIn bugData={bugs}/>}></Route>
+        <Route path ="/" element={<LoggedIn bugData={bugs}/>}></Route>
         <Route path ="/updatebug" element={<UpdateBug bugData={bugs}/>}></Route>
+        <Route path ="/about" element={<About/>}></Route>
       </Route>
     </Routes>);
 }

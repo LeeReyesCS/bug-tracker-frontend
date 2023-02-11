@@ -8,6 +8,7 @@ const UpdateBug = ({bugData}) => {
   const [status, setStatus] = useState ({
       status:bugData.status,
   });
+  const [selectedBug, setSelectedBug] = useState();
 
   // const { priority, description, dueDate } = bug;
 
@@ -15,18 +16,23 @@ const UpdateBug = ({bugData}) => {
     setStatus({ ...status, [event.target.name]: event.target.value });
   };
 
+  const selectBug = (event) => {
+    setSelectedBug(event.target.value);
+
+  }
+
  
   return (
     <div>
       <NavBar/>
-      <select name = "description" value="description">
-      {bugData?.map((bug)=> {
-    return( <option value = "description">{bug.status} {bug.description}</option>)
-  })}
-  </select>
-
-  <label for="status">Status:</label>
-    <select id="status" name="status" required ="true"
+      <select name = "description" value={selectedBug} onChange={selectBug}>
+        {bugData?.map((bug)=> {
+          return( <option name ="description" value = {bug.bugId}>{bug.status}   {bug.description}</option>)
+        })}
+      </select>
+{/* if selected bug is defined, add component */}
+  {/* <label for="status">Status:</label>
+    <select id="status" name="status"
         value={status}
         onChange={(event)=>onInputChange(event)}>
 
@@ -37,12 +43,10 @@ const UpdateBug = ({bugData}) => {
       <option value="Unclaimed">Unclaimed</option>
       <option value="Up Next">Up Next</option>
 
-    </select>
+    </select> */}
 
 
-    </div>
-
-  )
+    </div>)
 }
 
 export default UpdateBug;

@@ -2,7 +2,7 @@ import React from 'react'
 import { NavBar } from '../NavBar';
 import StatusBar from '../statusbar/StatusBar';
 import BarChart from '../BarChart';
-import { useState } from 'react';
+import Charts from '../charts/Charts';
 import './LoggedIn.css'
 
 const LoggedIn = ({bugData}) => {
@@ -15,6 +15,7 @@ const LoggedIn = ({bugData}) => {
     <BarChart chartData = {bugData}/>
     <StatusBar bugs = {bugData}/>
     </div>
+    <Charts chartData={bugData}/>
     </>
   )
 }

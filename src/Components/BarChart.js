@@ -35,8 +35,6 @@ const BarChart = ({chartData}) => {
 
 
 
-
-  // setchartInfo(chartData.status);
   
   ChartJS.register(
     CategoryScale,

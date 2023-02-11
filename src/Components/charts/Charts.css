@@ -1,0 +1,24 @@
+.carousel-styling {
+    height: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container {
+    height: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 3px 3px rgb(211, 217, 211);
+}
+
+.barchart-container {
+    padding-top: 75px;
+    height: 400px;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
