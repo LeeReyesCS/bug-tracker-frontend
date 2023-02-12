@@ -1,8 +1,10 @@
 import './BugForm.css';
-import { useState } from 'react';
-import api from '../../api/axiosConfig';
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 export const BugForm = ({toggleForm}) => {
+
+    const cookies = new Cookies();
   const [bug, setBug] = useState ({
     priority:"Low",
     description:"",
@@ -21,13 +23,29 @@ export const BugForm = ({toggleForm}) => {
     window.location.reload(false);
   }
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    await api.post("/bugs", bug);
-    toggleForm();
-    alert("Bug submitted!");
-    refreshPage();
-  };
+
+const onSubmit = async () => {
+  const headers = {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${cookies.get("token")}`
+  }
+
+  await axios.post("http://127.0.0.1:8080/bugs", bug, {
+      headers: headers
+    })
+    .then((response) => {
+      console.log(response);
+      if (response.status >= 200) return response.json();})
+      .then((bugData) => {
+        setBug(bugData);
+        console.log(bugData);
+        toggleForm();
+        alert("Bug submitted!");
+        refreshPage();
+      });
+}
+
+  useEffect (()=>onSubmit,[])
   return (
     <form className="bug-form" onSubmit={(event)=>onSubmit(event)}>
       <h2>Submit a new Bug</h2>
@@ -79,8 +97,7 @@ export const BugForm = ({toggleForm}) => {
       <input
         type="Submit"
         className="submit-btn"
-        defaultValue="Submit Bug"
-      ></input> 
+        defaultValue="Submit Bug"></input> 
       </form>
   )
 }

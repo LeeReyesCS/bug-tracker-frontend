@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useLocalState} from "react";
+import { useState, useEffect } from 'react';
 import api from '../../api/axiosConfig';
 import "./SignIn.css";
+import Cookies from 'universal-cookie';
 
 const SignIn = () => {
+  const cookies = new Cookies();
 
-  const[jwt, setJwt] = useLocalState("", "jwt");
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -22,18 +23,54 @@ const SignIn = () => {
 
   const sendLoginRequest = async (event) => {
     event.preventDefault();
-    await api.post("/api/v1/auth/register", user);
-    <Link to="/signin"></Link>;
-  };
+    await api.post("/api/v1/auth/authenticate", user)
+    .then((response)=> {
+      if(response.status === 200) {
+      cookies.set("token",response.data.token,["/"]);
+      const jwt = response.data.token;
+      console.log(jwt);
+      window.location.href ="home";
+    } else {
+      console.log("failure")
+      alert("invalid login!");
+      <Link to="/signin"></Link>;
+      return Promise.reject("Invalid login attempt");
+    }
+
+    })
+  .catch((message)=> {
+    alert("Invalid login attempt");
+  })};
+
+  // const login = () => {
+
+  //   fetch("http://localhost:8080/api/v1/auth/authenticate", {
+  //     "headers": {
+  //       "Content-Type": "application/json",
+  //       'Access-Control-Allow-Origin': '*',
+  //     },
+  //     "method" : "post",
+  //     body: JSON.stringify(user),
+  //   })
+  //   .then((response)=> Promise.all([response.json(), response.headers]))
+  //   .then(([body])=>{
+  //     cookies.set("token",body.token);
+  //     const jwt = body.token;
+  //     console.log(jwt);
+  //   })
+  
+  //   }
+  
+    // useEffect(()=>login(),[jwt])
 
   return (
     <div className=" container-signIn">
       <div className="row">
         <div className="col">
           <h2>Sign In</h2>
-          <form /*onSubmit={(event) => sendLoginRequest(event)}*/>
+          <form onSubmit={(event) => sendLoginRequest(event)}>
             <div>
-              <label className="form-label">E-mail</label>
+              <label htmlFor='email' className="form-label">E-mail</label>
               <br />
               <input
                 type={"email"}
@@ -59,11 +96,16 @@ const SignIn = () => {
                 ></input>
               </div>
             </div>
-            <button className="buttons-register" onClick={(event) => sendLoginRequest(event)}>
-              <Link className="sign-in" to="/signin">
-                Sign In
+           
+            <input
+        type="Submit"
+        className="buttons-register"
+        defaultValue="signin"
+      ></input> 
+              <Link className="register" to="/register">
+                Register
               </Link>
-            </button>
+  
           </form>
         </div>
       </div>

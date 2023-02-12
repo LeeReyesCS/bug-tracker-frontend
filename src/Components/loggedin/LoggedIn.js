@@ -8,6 +8,7 @@ import './LoggedIn.css'
 const LoggedIn = ({bugData}) => {
 
 
+
   return (
     <>
     <NavBar/>

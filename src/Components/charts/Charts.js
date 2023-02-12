@@ -119,7 +119,7 @@ datasets: [
   return (
     <div>
       <header>Progress Charts</header>
-    <Carousel className='carousel-styling'>
+    <Carousel className='carousel-styling' showThumbs = {false}>
     <div  className='chart-container'>
       <Doughnut data = {data} options = {options}/>
       </div>

@@ -1,10 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import api from '../../api/axiosConfig';
 import './Register.css';
+import { Navigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -21,7 +24,7 @@ const Register = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     await api.post("/api/v1/auth/register", user);
-    <Link to="/signin"></Link>;
+    navigate("/signin")
   };
 
   return (

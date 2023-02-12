@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { BugForm } from './bugform/BugForm';
 import './NavBar.css';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import { Navigate } from 'react-router-dom';
 
 
  export const NavBar = (props) => {
+
+  const cookie = new Cookies();
+  const navigate = useNavigate();
   const [bugFormVisible, setBugFormVisible] = useState(false);
 
   const toggleBugFormVisible = () => {
@@ -18,13 +22,18 @@ import { Link } from 'react-router-dom';
     </BugForm>
   ) : ("");
 
+  const signOut = () => {
+    cookie.remove("token")
+    alert("You've been signed out.")
+    navigate("/signin")
+  }
 
   return (
   
     <nav>
     <div className='NavBar'>
 
-        <Link to="/"><button className='button'>Home        </button></Link>
+        <Link to="/home"><button className='button'>Home        </button></Link>
         <br></br>
         <button className='bugSubmit' onClick={toggleBugFormVisible}>Submit a Bug
         </button>
@@ -32,7 +41,7 @@ import { Link } from 'react-router-dom';
         <br></br>
         <Link to="/updatebug"><button className='button'>Update Bug</button></Link>
         <br></br>
-          <Link to ="/signout"><button className='button'>Sign Out</button></Link>
+          <button className='button' onClick={()=>signOut()}>Sign Out</button>
           <br></br>
           <Link to ="/about"><button className='button'>About The Dev</button></Link>
     </div>
