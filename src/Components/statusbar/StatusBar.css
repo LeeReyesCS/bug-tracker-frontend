@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
+/* 
 .spacing {
     background-color: white;
     padding-left: 20px;
@@ -47,4 +47,200 @@ tr:nth-child(odd) {
 th{
     background-color: #32a860;
     padding-right: 80.5px;
+} */
+.Low {
+    background-color: rgb(114, 179, 141);
+    border-radius: 25px;
+    text-align: center;
+}
+.low {
+    background-color: rgb(114, 179, 141);
+    border-radius: 25px;
+    text-align: center;
+
+}
+
+.Medium {
+    background-color: rgb(226, 226, 105);
+    border-radius: 25px;
+    text-align: center;
+}
+.medium {
+    background-color: rgb(252, 252, 138);
+    border-radius: 25px;
+    text-align: center;
+
+}
+
+.word {
+    font-size: smaller;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+
+}
+
+.High {
+    background-color: rgb(206, 78, 78);
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+
+
+}
+.high {
+    background-color: rgb(163, 48, 48);
+    border-radius: 25px;
+    text-align: center;
+
+}
+
+
+
+.table100.ver1 td {
+    font-size: 15px;
+    color: gray;
+    line-height: 1.4;    
+
+
+}
+.table100-body td {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.column1 {
+    width: 33%;
+    padding-left: 40px;
+}
+th, td {
+    font-weight: unset;
+    padding-right: 10px;
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+user agent stylesheet
+td {
+    display: table-cell;
+    vertical-align: inherit;
+
+}
+table {
+    border-collapse: collapse;
+}
+user agent stylesheet
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-radius: 25px;
+
+}
+
+html {
+    box-sizing: border-box;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    /* -ms-overflow-style: scrollbar; */
+    -webkit-tap-highlight-color: transparent;
+}
+*, ::after, ::before {
+    box-sizing: inherit;
+
+
+}
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+thead tr,
+tfoot tr
+{
+	background:#243b55;
+    color:#03e9f4;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    border: none;
+    outline: none;
+}
+
+tbody tr:nth-child(even)
+{
+    background:#243b55;
+    color:white;
+    /* border-radius: 25px; */
+    border: none;
+    outline: none;
+}
+
+th, td
+{
+	border: none;
+	padding: 0.5em;
+	text-align: left;
+	vertical-align: top;
+	font-weight: normal;
+}
+
+.scrollable thead,
+.scrollable tfoot,
+.scrollable tbody,
+.scrollable th,
+.scrollable td
+{
+	display: block;
+	width: 100%;
+}
+
+.scrollable thead,
+.scrollable tfoot,
+.scrollable tbody
+{
+	overflow-y: scroll;
+}
+
+.scrollable thead,
+.scrollable tfoot
+{
+	-ms-overflow-style: none;
+}
+
+.scrollable thead::-webkit-scrollbar,
+.scrollable tfoot::-webkit-scrollbar
+{
+	visibility: hidden;
+}
+
+.scrollable tbody
+{
+	max-height: 20em;
+	position: relative;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.scrollable tr
+{
+	display: flex;
+}
+
+.scrollable tbody th,
+.scrollable tbody td
+{
+	border-top: none;
+}
+
+.scrollable th:not(:last-child),
+.scrollable td:not(:last-child)
+{
+	border-right: none;
 }

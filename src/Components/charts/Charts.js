@@ -91,6 +91,7 @@ ChartJS.register(
 
  const bar_options = {
   responsive: true,
+  maintainAspectRatio:false,
   plugins: {
     legend: {
       display:false
@@ -117,17 +118,19 @@ datasets: [
 };
 
   return (
-    <div>
-      <header>Progress Charts</header>
-    <Carousel className='carousel-styling' showThumbs = {false}>
-    <div  className='chart-container'>
-      <Doughnut data = {data} options = {options}/>
-      </div>
-      <div className='barchart-container'>
-      <Bar data ={bar_data} options = {bar_options}/>
+    <>
+    <div className='carousel-charts'>
+      <header className='charts-header'>Progress Charts</header>
+      <Carousel className='carousel-styling' showThumbs = {false}>
+        <div  className='chart-container'>
+          <Doughnut data = {data} options = {options}/>
+        </div>
+        <div className='barchart-container'>
+          <Bar data ={bar_data} options = {bar_options}/>
+        </div>
+      </Carousel>
     </div>
-    </Carousel>
-    </div>
+    </>
   )
 }
 

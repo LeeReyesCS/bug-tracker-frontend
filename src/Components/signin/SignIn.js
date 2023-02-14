@@ -42,48 +42,32 @@ const SignIn = () => {
     alert("Invalid login attempt");
   })};
 
-  // const login = () => {
 
-  //   fetch("http://localhost:8080/api/v1/auth/authenticate", {
-  //     "headers": {
-  //       "Content-Type": "application/json",
-  //       'Access-Control-Allow-Origin': '*',
-  //     },
-  //     "method" : "post",
-  //     body: JSON.stringify(user),
-  //   })
-  //   .then((response)=> Promise.all([response.json(), response.headers]))
-  //   .then(([body])=>{
-  //     cookies.set("token",body.token);
-  //     const jwt = body.token;
-  //     console.log(jwt);
-  //   })
-  
-  //   }
-  
-    // useEffect(()=>login(),[jwt])
 
   return (
-    <div className=" container-signIn">
+    <div className ="background">
+    <div className="login-box">
       <div className="row">
         <div className="col">
-          <h2>Sign In</h2>
+          <h2>Login</h2>
           <form onSubmit={(event) => sendLoginRequest(event)}>
-            <div>
-              <label htmlFor='email' className="form-label">E-mail</label>
+            <div className='user-box'>
+              <label htmlFor='email' className="form-label">Email:</label>
               <br />
+              <div className='user-box'>
               <input
                 type={"email"}
                 className="form-control"
-                placeholder="Enter your e-mail address"
+                // placeholder="Enter your e-mail address"
                 name="email"
                 value={email}
                 onChange={(event) => onInputChange(event)}
               ></input>
+              </div>
             </div>
             <div>
-              <div>
-                <label for="password">Password (8 characters minimum):</label>
+              <div className="user-box">
+                <label for="password">Password:</label>
                 <br />
                 <input
                   type="password"
@@ -96,19 +80,19 @@ const SignIn = () => {
                 ></input>
               </div>
             </div>
-           
-            <input
+          <input
         type="Submit"
         className="buttons-register"
-        defaultValue="signin"
-      ></input> 
-              <Link className="register" to="/register">
+        defaultValue="login"
+      ></input>
+              <Link className="register" to="/register"><span></span><span></span><span></span><span></span>
                 Register
               </Link>
   
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,24 +1,42 @@
+.carousel-charts {
+
+    border-radius: 10px;
+    padding-top: 2px;
+    padding-bottom: 25px;
+}
+
 .carousel-styling {
-    height: 300px;
+    height: 275px;
     width: 300px;
     display: flex;
     flex-direction: column;
+    z-index: 0;
+}
+
+.charts-header {
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: medium;
+    padding-bottom: 25px;
+    letter-spacing: 4px;
+
 }
 
 .chart-container {
-    height: 300px;
+    height: 275px;
     width: 300px;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 3px 3px rgb(211, 217, 211);
 }
 
 .barchart-container {
-    padding-top: 75px;
-    height: 400px;
+    height: 275px;
     width: 300px;
+    padding-top: 30px;
     border: 1px solid black;
     border-radius: 10px;
 }

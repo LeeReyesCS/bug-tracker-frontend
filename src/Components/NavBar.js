@@ -32,7 +32,6 @@ import { Navigate } from 'react-router-dom';
   
     <nav>
     <div className='NavBar'>
-
         <Link to="/home"><button className='button'>Home        </button></Link>
         <br></br>
         <button className='bugSubmit' onClick={toggleBugFormVisible}>Submit a Bug

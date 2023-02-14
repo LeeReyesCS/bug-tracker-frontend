@@ -17,7 +17,6 @@ function App() {
   const cookies = new Cookies();
 
 
-
   const [bugs, setBugs] = useState();
 
   const getBugs = async () => {
@@ -45,7 +44,7 @@ function App() {
       <Route path ="/" element = {<Layout/>}>
         <Route path ="/signin" element={<SignIn/>}></Route>
         <Route path ="/register" element ={<Register/>}></Route>
-        <Route path ="/home" element={<PrivateRoute jwt = {cookies.get("token")}><LoggedIn bugData={bugs}/></PrivateRoute>}></Route>
+        <Route path ="/home" element={<PrivateRoute jwt = {cookies.get("token")}><LoggedIn bugData={bugs} /></PrivateRoute>}></Route>
         <Route path ="/updatebug" element={<PrivateRoute jwt = {cookies.get("token")}><UpdateBug bugData={bugs}/></PrivateRoute>}></Route>
 
         <Route path ="/about" element={<PrivateRoute jwt = {cookies.get("token")}><About/></PrivateRoute>}></Route>

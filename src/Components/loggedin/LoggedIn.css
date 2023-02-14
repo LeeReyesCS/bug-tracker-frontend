@@ -1,5 +1,26 @@
+.page-container {
+  display: flex;
+  flex-direction: row;
+
+}
 .box {
     display: flex;
-    align-items: stretch;
-    padding-top: 75px;
+    padding-top: 25px;
+    flex-direction: column;
+    padding-left: 150px;
+    justify-content: center;
+
   }
+
+
+.charts {
+  padding-top: 50px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+  
+.bar-graph{
+  padding-right: 50px;
+
+}

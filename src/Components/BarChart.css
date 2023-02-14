@@ -1,6 +1,15 @@
 .bar-chart{
-    width: 400px;
+    width: 200px;
     height: 300px;
     display: flex;
     flex-direction: column;
+}
+
+.barchart-header {
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: medium;
+    padding-bottom: 25px;
+    letter-spacing: 4px;
 }

@@ -44,26 +44,26 @@ const BarChart = ({chartData}) => {
     Tooltip,
     Legend
   );
-  
-   const options = {
+  const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'top',
+        display:false
       },
       title: {
-        display: true,
-        text: 'Bug Status',
+        display: false,
+        text: 'Bug ',
       },
     },
   };
-  const labels = ["Unclaimed","In Progress", "Up Next", "Needs Review", "Blocked", "Solved"];
+  const labels = ["In Progress", "Up Next", "Needs Review", "Blocked", "Solved"];
   const data = {
   labels,
   datasets: [
     {
       label: 'Dataset 1',
-      data: [countStatus(chartData,"Unclaimed",unclaimedCount), 
+      data: [
       countStatus(chartData,"In Progress",inProgressCount), 
       countStatus(chartData,"Up Next",upNextCount),
       countStatus(chartData,"Needs Review",reviewCount),
@@ -76,6 +76,7 @@ const BarChart = ({chartData}) => {
 
   return (
     <div className="bar-chart" >
+      <header className="barchart-header">Bugs by Status</header>
   <Bar data ={data} options = {options}/>
   </div>
   )

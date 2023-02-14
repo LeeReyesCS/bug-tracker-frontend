@@ -11,12 +11,19 @@ const LoggedIn = ({bugData}) => {
 
   return (
     <>
+    <div className='page-container'>
     <NavBar/>
     <div className='box'>
-    <BarChart chartData = {bugData}/>
     <StatusBar bugs = {bugData}/>
+    
+    <div className='charts'>
+      <div className='bar-graph'>
+    <BarChart chartData = {bugData}/>
     </div>
     <Charts chartData={bugData}/>
+    </div>
+    </div>
+    </div>
     </>
   )
 }
