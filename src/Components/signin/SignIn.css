@@ -28,6 +28,9 @@ html {
   padding: 0;
   color: #fff;
   text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
 .login-box .user-box {
@@ -49,15 +52,14 @@ html {
   position: absolute;
   top:0;
   left: 0;
-  padding: 10px 0;
+  padding-bottom: 50px;
   font-size: 16px;
   color: #fff;
   pointer-events: none;
   transition: .5s;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.login-box .user-box input{
   top: -20px;
   left: 0;
   color: #03e9f4;
@@ -75,7 +77,7 @@ html {
   overflow: hidden;
   transition: .5s;
   margin-top: 40px;
-  letter-spacing: 4px
+  letter-spacing: 4px;
 }
 
 .login-box a:hover {
@@ -204,4 +206,8 @@ html {
   50%,100% {
     bottom: 100%;
   }
+}
+
+.spacing {
+  width: 35px;
 }

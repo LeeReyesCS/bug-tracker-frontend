@@ -16,11 +16,11 @@ function App() {
 
   const cookies = new Cookies();
 
-
+  const BACKEND_URL = `https://bug-tracker-backend.herokuapp.com`;
   const [bugs, setBugs] = useState();
 
   const getBugs = async () => {
-    fetch("http://127.0.0.1:8080/bugs", {
+    fetch(`${BACKEND_URL}/bugs`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${cookies.get("token")}`,

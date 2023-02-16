@@ -10,7 +10,7 @@ export const StatusBar = ({bugs}) => {
     <div className='container-table100'>
       <div className='wrap-table100'>
         <table class = "scrollable">
-          <thead>
+          <thead className = "status-headers">
         <tr>
         <th>Priority</th>
           <th>Description</th>

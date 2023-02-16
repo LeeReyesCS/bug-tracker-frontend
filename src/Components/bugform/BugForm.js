@@ -25,13 +25,16 @@ export const BugForm = ({toggleForm}) => {
   }
 
 
+  const BACKEND_URL = `https://bug-tracker-backend.herokuapp.com`;
+
+
 const onSubmit = async () => {
   const headers = {
     "Content-Type": "application/json",
     "Authorization": `Bearer ${cookies.get("token")}`
   }
 
-  await axios.post("http://127.0.0.1:8080/bugs", bug, {
+  await axios.post(`${BACKEND_URL}/bugs`, bug, {
       headers: headers
     })
     .then((response) => {

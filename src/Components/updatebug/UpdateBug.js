@@ -9,10 +9,12 @@ import './UpdateBug.css';
 const UpdateBug = () => {
 
   const cookies = new Cookies();
+  const BACKEND_URL = `https://bug-tracker-backend.herokuapp.com`;
+
 
   const [bugs, setBugs] = useState()
   const getBugs = async () => {
-    fetch("http://127.0.0.1:8080/bugs", {
+    fetch(`${BACKEND_URL}/bugs`, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${cookies.get("token")}`,
@@ -78,7 +80,7 @@ const onSubmit = async (event) => {
   }
 
 
-  await axios.put(`http://127.0.0.1:8080/bugs/${selectedBug.bugId}`, {...selectedBug, description:`${oldDescription}\n[Updated ${date}]: ${selectedBug.description}` }, {
+  await axios.put(`${BACKEND_URL}/bugs/${selectedBug.bugId}`, {...selectedBug, description:`${oldDescription}\n[Updated ${date}]: ${selectedBug.description}` }, {
       headers: headers
     })
     .then((response)=> {

@@ -58,7 +58,6 @@ const SignIn = () => {
               <input
                 type={"email"}
                 className="form-control"
-                // placeholder="Enter your e-mail address"
                 name="email"
                 value={email}
                 onChange={(event) => onInputChange(event)}
@@ -80,15 +79,16 @@ const SignIn = () => {
                 ></input>
               </div>
             </div>
+            <div className='btns'>
           <input
         type="Submit"
         className="buttons-register"
         defaultValue="login"
-      ></input>
+      ></input><div className='spacing'></div>
               <Link className="register" to="/register"><span></span><span></span><span></span><span></span>
                 Register
               </Link>
-  
+              </div>
           </form>
         </div>
       </div>
